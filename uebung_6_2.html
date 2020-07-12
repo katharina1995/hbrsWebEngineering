@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+</head>
+
+<body onload="load()">
+	<div id="ausgabe"></div>
+    <button type="button" class="btn btn-secondary" onclick="load()">Aufgabe starten</button>
+</body>
+<script type="text/javascript">
+async function load() {
+	var responseA = await fetch('A.txt');
+	var responseB = await fetch('B.txt');
+	var textA = await responseA.text();
+	var textB = await responseB.text();
+	
+	var sampleRespSplitted = textA.split("\n");
+	var sample2RespSplitted = textB.split("\n");
+	var concatenatedResp = [];
+	var div = document.getElementById("ausgabe");
+	for(var i=0; i < sampleRespSplitted.length; i++) {
+		var concatenatedLine = sampleRespSplitted[i] + sample2RespSplitted[i];
+		concatenatedResp.push(concatenatedLine);
+		var newTextLine = document.createElement("P");
+		newTextLine.innerHTML = concatenatedLine;
+		div.appendChild(newTextLine);
+	}
+}
+</script>
+</html>

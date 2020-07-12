@@ -1,0 +1,25 @@
+	{
+	"html": {
+		"headings": {"text": "fuzfzufz", "additionalData": ""},
+		"paragraphs": {"text": "fuzfzufz", "additionalData": ""},
+		"links": {"text": "fuzfzufz", "additionalData": ""},
+		"images": {"text": "fuzfzufz", "additionalData": ""},
+		"tables": {"text": "fuzfzufz", "additionalData": ""}
+	},
+	"css": {
+		"selectors": {"text": "fuzfzufzguguhihil", "additionalData": ""},
+		"colors": {"text": "fuzfzufzcolor", "additionalData": ""},
+		"boxes": {"text": "fuzfzufzbox", "additionalData": ""},
+		"display": {"text": "fuzfzufz", "additionalData": ""},
+		"float": {"text": "fuzfzufz", "additionalData": ""}
+	},
+	"javascript": {
+		"functions": {"text": "fuzfzufz", "additionalData": ""},
+		"objects": {"text": "fuzfzufz", "additionalData": ""},
+		"scope": {"text": "fuzfzgugouhufz", "additionalData": ""},
+		"events": {"text": "fuzfzufz", "additionalData": ""},
+		"hoisting": {"text": "fuzfzufz", "additionalData": ""},
+		"strict_mode": {"text": "fuzfzufz", "additionalData": ""},
+		"JSON": {"text": "fuzfzufz", "additionalData": ""}
+	}
+}

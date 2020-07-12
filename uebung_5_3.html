@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+</head>
+
+<body onload="performance()">
+	<div id="test">
+		Text, <code>code</code> <p><strong>und mehr Text</strong></p>
+	</div>
+	<div id="test2">
+	</div>
+	<div id="ergebnis">
+		<table>
+			<tr>
+				<th>Befehl</th>
+				<th>Zeit lesen</th>
+				<th>Zeit schreiben</th>
+			</tr>
+			<tr>
+				<td>innerHTML</td>
+				<td id="read_0"></td>
+				<td id="write_0"></td>
+			</tr>
+			<tr>
+				<td>innerText</td>
+				<td id="read_1"></td>
+				<td id="write_1"></td>
+			</tr>
+			<tr>
+				<td>textContent</td>
+				<td id="read_2"></td>
+				<td id="write_2"></td>
+			</tr>
+						<tr>
+				<td>outerHTML</td>
+				<td id="read_3"></td>
+				<td id="write_3"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+<script type="text/javascript">
+function performance() {
+debugger;
+	var testCases = ["innerHTML", "innerText", "textContent", "outerHTML"];
+	var text  = document.getElementById("test");
+	for(var i = 0; i < testCases.length; i++) {
+			var start = Date.now();
+			var x = document.getElementById("test")[testCases[i]];
+			var milliseconds = Date.now() - start;
+			document.getElementById("read_" + i).innerHTML = milliseconds;
+	}
+	var content = "Text, <code>code</code> <p><strong>und mehr Text</strong></p>";
+	for(var j=0; j < testCases.length; j++) {
+			var start = Date.now();
+			document.getElementById("test2").innerHTML = content;
+			var milliseconds = Date.now() - start;
+			document.getElementById("write_" + j).innerHTML = milliseconds;
+	}
+	
+}
+</script>
+</html>

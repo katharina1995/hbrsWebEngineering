@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+</head>
+
+
+<body>
+	<div class="container"  style="margin-top: 20px">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine JavaScript-Fabrikfunktion für Warteschlangen (FIFO-Prinzip). Fabrikfunktionen erzeugen Objekte. Privatisieren Sie so viel wie möglich. Schreiben Sie Tests für Ihre Implementierung.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function QueueFifo(x) {<br/></code>
+				<code style="padding-left: 15px">var content = [];<br/></code>
+				<code style="padding-left: 15px">var self = {<br/></code>
+				<code style="padding-left: 30px">addElement: function(element) {<br/></code>
+				<code style="padding-left: 45px">content.push(element);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">getElement: function() {<br/></code>
+				<code style="padding-left: 45px">if(self.isEmpty() === false) {<br/></code>
+				<code style="padding-left: 60px">return content.shift();<br/></code>
+				<code style="padding-left: 45px">} else {<br/></code>
+				<code style="padding-left: 60px">throw "Array Empty";<br/></code>
+				<code style="padding-left: 45px">}<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">size: function() {<br/></code>
+				<code style="padding-left: 45px">return content.length;<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">isEmpty: function() {<br/></code>
+				<code style="padding-left: 45px">return (content.length === 0);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">front: function() {<br/></code>
+				<code style="padding-left: 45px">return content[0];<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code style="padding-left: 15px">return self;<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine JavaScript-Fabrikfunktion für ungeordnete Mengen. In ungeordneten Mengen tritt kein Element mehrfach auf. Privatisieren Sie so viel wie möglich. Schreiben Sie Tests für Ihre Implementierung.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function UnorderedSet(x) {<br/></code>
+				<code style="padding-left: 15px">var unorderedset = [];<br/></code>
+				<code style="padding-left: 15px">var self = {<br/></code>
+				<code style="padding-left: 30px">add: function(element) {<br/></code>
+				<code style="padding-left: 45px">if(self.has(element) === false) {<br/></code>
+				<code style="padding-left: 60px">unorderedset.push(element);<br/></code>
+				<code style="padding-left: 45px">}<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">has: function(element) {<br/></code>
+				<code style="padding-left: 45px">return unorderedset.includes(element);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">delete: function(element) {<br/></code>
+				<code style="padding-left: 45px">if(self.has(element) === true) {<br/></code>
+				<code style="padding-left: 60px">unorderedset.splice(unorderedset.indexOf(element),1);<br/></code>
+				<code style="padding-left: 45px">}<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code style="padding-left: 15px">return self;<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine JavaScript-Fabrikfunktion für ungeordnete Multi-Mengen. In ungeordneten Multi-Mengen dürfen Elemente mehrfach auftreten. Privatisieren Sie so viel wie möglich. Schreiben Sie Tests für Ihre Implementierung.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function UnorderedMultiSet(x) {<br/></code>
+				<code style="padding-left: 15px">var unorderedmultiset = [];<br/></code>
+				<code style="padding-left: 15px">var self = {<br/></code>
+				<code style="padding-left: 30px">add: function(element) {<br/></code>
+				<code style="padding-left: 45px">unorderedmultiset.push(element);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">has: function(element) {<br/></code>
+				<code style="padding-left: 45px">return unorderedmultiset.includes(element);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">delete: function(element) {<br/></code>
+				<code style="padding-left: 45px">if(self.has(element) === true) {<br/></code>
+				<code style="padding-left: 60px">unorderedmultiset.splice(unorderedmultiset.indexOf(element),1);<br/></code>
+				<code style="padding-left: 45px">}<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code style="padding-left: 15px">return self;<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+    </div>
+</body>
+
+</html>

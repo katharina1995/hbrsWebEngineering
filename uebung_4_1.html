@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+</head>
+
+
+<!-- ein Teil der folgenden Funktionen stammt aus folgender Quelle: https://gist.github.com/leocaseiro/33908af998cab3ff0cfd (zuletzt besucht am 10.07.2002),
+ die restlichen, in der Quelle nicht vorhandenen, Funktionen sind Eigenleistung -->
+<body>
+	<div class="container"  style="margin-top: 20px">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion identity_function(), die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt, die dieses Argument zurück gibt.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function identity_function(x) {<br/></code>
+				<code style="padding-left: 15px">return function(x) { <br/></code>
+				<code style="padding-left: 30px">return x;<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Addier-Funktion addf(), so dass addf(x)(y) genau x + y zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen. addf(x) liefert eine Funktion, die auf y angewandt wird.)</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function addf(x) {<br/></code>
+				<code style="padding-left: 15px">return function(y) { <br/></code>
+				<code style="padding-left: 30px">return x + y;<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion applyf(), die aus einer binären Funktion wie add(x,y) eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. addf = applyf(add); addf(x)(y) soll add(x,y) liefern. Entsprechend applyf(mul)(5)(6) soll 30 liefern, wenn mul die binäre Multiplikation ist.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function applyf(x) {<br/></code>
+				<code style="padding-left: 15px">return function(x) { <br/></code>
+				<code style="padding-left: 30px">return function(y) { <br/></code>
+				<code style="padding-left: 45px">return f(x,y);<br/></code>
+				<code style="padding-left: 30px">};<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion curry() (von Currying), die eine binäre Funktion und ein Argument nimmt, um daraus eine Funktion zu erzeugen, die ein zweites Argument entgegen nimmt, z.B. add3 = curry(add, 3);add3(4) ergibt 7. curry(mul, 5)(6) ergibt 30.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function curry(f, x) {<br/></code>
+				<code style="padding-left: 15px">return function(y) { <br/></code>
+				<code style="padding-left: 30px">return f(x,y);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Erzeugen Sie die inc-Funktion mit Hilfe einer der Funktionen addf, applyf und curry aus den letzten Aufgaben, ohne die Funktion inc() selbst zu implementieren. (inc(x) soll immer x + 1 ergeben und lässt sich natürlich auch direkt implementieren. Das ist aber hier nicht die Aufgabe.) Vielleicht schaffen Sie es auch, drei Varianten der inc()-Implementierung zu schreiben?</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function inc(x) {<br/></code>
+				<code style="padding-left: 15px">return addf(x)(1) { <br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion methodize(), die eine binäre Funktion (z.B. add, mul) in eine unäre Methode verwandelt. Nach Number.prototype.add = methodize(add); soll (3).add(4) genau 7 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function methodize() {<br/></code>
+				<code style="padding-left: 15px">return function(y) { <br/></code>
+				<code style="padding-left: 30px">return f(this, y);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion demethodize(), die eine unäre Methode (z.B. add, mul) in eine binäre Funktion umwandelt. demethodize(Number.prototype.add)(5, 6) soll 11 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function demethodize(f) {<br/></code>
+				<code style="padding-left: 15px">return function(x, y) { <br/></code>
+				<code style="padding-left: 30px">return f.call(x, y);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion twice(), die eine binäre Funktion in eine unäre Funktion umwandelt, die den einen Parameter zweimal weiter reicht. Z.B. var double = twice(add); double(11) soll 22 ergeben; var square = twice(mul); square(11) soll mul(11,11) === 121 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function twice(f) {<br/></code>
+				<code style="padding-left: 15px">return function(x) { <br/></code>
+				<code style="padding-left: 30px">return f(x, x);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion composeu(), die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert, die beide nacheinander aufruft, z.B. soll composeu(double, square)(3) genau 36 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function composeu(f, g) {<br/></code>
+				<code style="padding-left: 15px">return function(x) { <br/></code>
+				<code style="padding-left: 30px">return g(f(x));<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion composeb(), die zwei binäre Funktionen in eine einzelne Funktion transformiert, die beide nacheinander aufruft, z.B. composeb(add, mul)(2, 3, 5) soll 25 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function composeb(f, g) {<br/></code>
+				<code style="padding-left: 15px">return function(x, y, z) { <br/></code>
+				<code style="padding-left: 30px">return g(f(x, y), z);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Funktion once(), die einer anderen Funktion nur einmal erlaubt, aufgerufen zu werden, z.B. add_once = once(add); add_once(3, 4) soll beim ersten Mal 7 ergeben, beim zweiten Mal soll jedoch add_once(3, 4) einen Fehlerabbruch bewirken.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function once(f) {<br/></code>
+				<code style="padding-left: 15px">return function() { <br/></code>
+				<code style="padding-left: 30px">var g = f;<br/></code>
+				<code style="padding-left: 30px">f = null;<br/></code>
+				<code style="padding-left: 30px">return g.apply(this.arguments);<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine Fabrik-Funktion counterf(), die zwei Funktionen inc() und dec() berechnet, die einen Zähler hoch- und herunterzählen. Z.B. counter = counterf(10); Dann soll counter.inc() 11 und counter.dec() wieder 10 ergeben.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function counterf(x) {<br/></code>
+				<code style="padding-left: 15px">return { <br/></code>
+				<code style="padding-left: 30px">inc: function() {<br/></code>
+				<code style="padding-left: 45px">return x = x + 1;<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">dec: function() {<br/></code>
+				<code style="padding-left: 45px">return x = x - 1;<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Schreiben Sie eine rücknehmbare Funktion revocable(), die als Parameter eine Funktion nimmt und diese bei Aufruf ausführt. Sobald die Funktion aber mit revoke() zurück genommen wurde, führt ein erneuter Aufruf zu einem Fehler. Z.B.
+temp = revocable(alert);
+temp.invoke(7); // führt zu alert(7);
+temp.revoke();
+temp.invoke(8); // Fehlerabbruch!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function revocable(f) {<br/></code>
+				<code style="padding-left: 15px">return { <br/></code>
+				<code style="padding-left: 30px">invoke: function() {<br/></code>
+				<code style="padding-left: 45px">f.apply(this, arguments);<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">revoke: function() {<br/></code>
+				<code style="padding-left: 45px">f = null;<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 20px">
+			<div class="col-lg-7">
+				<p>Implementieren Sie ein "Array Wrapper"-Objekt mit den Methoden get, store und append, so dass ein Angreifer keinen Zugriff auf das innere, private Array hat.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7">
+				<code>function ArrayWrapper() {<br/></code>
+				<code style="padding-left: 15px">var inner = [];<br/></code>
+				<code style="padding-left: 15px">var self = {<br/></code>
+				<code style="padding-left: 30px">append: function(element) {<br/></code>
+				<code style="padding-left: 45px">inner[inner.length] = element;<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">get: function(index) {<br/></code>
+				<code style="padding-left: 45px">return inner[index];<br/></code>
+				<code style="padding-left: 30px">},<br/></code>
+				<code style="padding-left: 30px">store: function(index, element) {<br/></code>
+				<code style="padding-left: 45px">inner[index] = element;<br/></code>
+				<code style="padding-left: 30px">}<br/></code>
+				<code style="padding-left: 15px">};<br/></code>
+				<code>}</code>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+<!-- ein Teil der folgenden Funktionen stammt aus folgender Quelle: https://gist.github.com/leocaseiro/33908af998cab3ff0cfd (zuletzt besucht am 10.07.2002),
+ die restlichen, in der Quelle nicht vorhandenen, Funktionen sind Eigenleistung -->
+<script type="text/javascript">
+function executeIdentityFunction() {
+	var x = document.getElementById("identity").value;
+	var func = identity_function();
+	var y = func(x);
+	document.getElementById("output_identity").innerHTML = y;
+}
+
+function identity_function(x) {
+	return function b(x) {
+		return x;
+	};
+}
+
+
+function executeAddfFunction() {
+		var x = document.getElementById("addfx").value;
+		var y = document.getElementById("addfy").value;
+		var z = addf(x)(y);
+		document.getElementById("output_addf").innerHTML = z;
+}
+
+function addf(x) {
+    return function(y) {
+        return +x + +y;
+    };
+}
+
+
+function executeApplyfFunction() {
+		var x = document.getElementById("applyfx").value;
+		var y = document.getElementById("applyfy").value;
+		var addf = applyf(add);
+		var z = addf(x)(y);
+		document.getElementById("output_applyf").innerHTML = z;
+}
+
+function add(x, y) {
+	return +x + +y;
+}
+
+function applyf(f) {
+	return function (x) {
+		return function (y) {
+			return f(x, y);
+		};
+	};
+}
+
+function curry(f, x) {
+	return function(y) {
+		return f(x,y);
+	};
+}
+
+function inc(x) {
+	return addf(x)(1);
+}
+
+function methodize() {
+	return function(y) {
+		return f(this, y);
+	};
+}
+
+function demothodize(f) {
+	return function(x, y) {
+		return f.call(x, y);
+	};
+}
+
+function twice(f) {
+  return function(x) {
+    return f(x, x);
+  };
+}
+
+function composeu(f, g) {
+	return function(x) {
+		return g(f(x));
+	};
+}
+
+function composeb(f, g) {
+	return function(x, y, z) {
+		return g(f(x, y), z);
+	};
+}
+
+function once(f) {
+	return function() {
+		var g = f;
+		f = null;
+
+		return g.apply(this, arguments);
+	};
+}
+
+function counterf(x) {
+return {
+inc: function() {
+return x = x+1;
+}, 
+dec: function() {
+return x = x-1;
+}
+};
+}
+
+function revocable(f) {
+return {
+invoke: function() {
+f.apply(this, arguments);
+},
+revoke: function() {
+f = null;
+}
+};
+} 
+
+function ArrayWrapper(){
+	var inner = [];
+	var self={
+		append:function(element){
+			inner[inner.length]=element;
+		},
+		get:function(index){
+			return inner[index];
+		},
+		store:function(index,element){
+			inner[index]=element;
+		}
+	};
+	return self;
+}
+
+var test = ArrayWrapper();
+
+test.append("Test1");
+test.append("Test2");
+test.append("Test3");
+test.store(5,"Test4");
+console.log(test.get(0));//Output : Test1
+console.log(test.get(1));//Output : Test2
+console.log(test.get(2));//Output : Test3
+console.log(test.get(3));//Output : undefined
+console.log(test.get(4));//Output : undefined
+console.log(test.get(5));//Output : Test4
+</script>
+</html>

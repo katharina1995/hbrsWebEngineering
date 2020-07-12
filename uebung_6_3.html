@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Verwendetes css (teils abgewandelt) aus folgenden Quellen: https://www.w3schools.com/css/css_navbar_vertical.asp (zuletzt besucht am: 09.07.2020)
+ und https://www.w3schools.com/css/css_navbar_horizontal.asp (zuletzt besucht am: 09.07.2020) -->
+<style>
+#vertical {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 130px;
+    background-color: #333;
+}
+
+#horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.lihorizontal {
+  float: left;
+}
+
+.ahorizontal {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  width: 100px;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.active {
+    background-color: #4CAF50;
+  color: white;
+}
+
+
+.avertical {
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.item1 { 
+	grid-area: red;
+	background-color: white;
+}
+
+.item2 { 
+	grid-area: green; 
+	height: 60vh;
+	background-color: white;
+}
+.item3 { 
+	grid-area: blue; 
+	height: 60vh;
+	background-color: white;
+}
+.item4 { 
+	grid-area: fuchsia; 
+	height: 60vh;
+	background-color: fuchsia;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+      'red red red red red'
+    'green blue blue blue fuchsia';
+  grid-gap: 2%;
+  padding: 10px;
+}
+
+
+</style>
+</head>
+
+<body onload="test()">
+<div class="grid-container">
+	<div class="item1">
+		<h1>WWW-Navigator</h1>
+
+
+		<ul id="horizontal">
+			<li class="lihorizontal"><a class="active ahorizontal" id="css" onclick="fillVerticalNavbar(this.id)">CSS</a></li>
+			<li class="lihorizontal"><a class="ahorizontal" id="html" onclick="fillVerticalNavbar(this.id)">HTML</a></li>
+			<li class="lihorizontal"><a class="ahorizontal" id="javascript" onclick="fillVerticalNavbar(this.id)">JavaScript</a></li>
+		</ul>
+	</div>
+
+	<div class="item2">
+		<ul id="vertical">
+		</ul>
+	</div>
+	
+	<div class="item3">
+		<p id="text"></p>
+		<button type="button" id="back" onclick="back()">Zurück</button>
+	</div>
+
+	<div class="item4">
+	
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+var json;
+var last_horizontal;
+var last_vertical;
+var active_horizontal;
+var active_vertical;
+
+async function test() {
+var response = await fetch('input.json');
+json = await response.json();
+active_horizontal = "css";
+fillVerticalNavbar("css");
+last_horizontal = "css";
+
+}
+
+function fillVerticalNavbar(identifier) {
+	document.getElementById(active_horizontal).classList.remove("active");
+	document.getElementById(identifier).classList.add("active");
+	var ul = document.getElementById("vertical");
+	ul.innerHTML = '';
+	var data = json[identifier];
+	for(var key in data) {
+		var ul = document.getElementById("vertical");
+		var li = document.createElement("LI");
+		var a = document.createElement("A");
+		a.classList.add("avertical");
+		a.setAttribute("id", key);
+		a.setAttribute("name", identifier)
+		a.innerHTML = key;
+		a.setAttribute("onclick", "showText(this.id, this.name)");
+		li.appendChild(a);
+		ul.appendChild(li);
+	}
+	
+	ul.getElementsByTagName("a")[0].classList.add("active");
+	active_vertical = ul.getElementsByTagName("a")[0].id;
+	var text = json[identifier][active_vertical]["text"];
+	document.getElementById("text").innerHTML = text;
+	active_horizontal = identifier;
+}
+
+function showText(id, identifier) {
+	document.getElementById(active_vertical).classList.remove("active");
+	document.getElementById(id).classList.add("active");
+	var text = json[identifier][id]["text"];
+	document.getElementById("text").innerHTML = text;
+	last_vertical = active_vertical;
+	active_vertical = id;
+	last_horizontal = active_horizontal;
+	active_horizontal = identifier;
+}
+
+function back() {
+	showText(last_vertical, last_horizontal);
+}
+</script>
+</html>

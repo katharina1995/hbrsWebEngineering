@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+</head>
+
+<body>
+<h1>Einkaufsliste</h1>
+
+Enter a new item: <input type="text" name="addItem" id="addItem"> <button type="button" onClick="addItem()">Add item</button>
+
+<ul id="list">
+	<li>Kaffee <button type="button" onClick="deleteItem(this)">Delete</button></li>
+	<li>Äpfel <button type="button" onClick="deleteItem(this)">Delete</button></li>
+	<li>Bananen <button type="button" onClick="deleteItem(this)">Delete</button></li>
+</ul>
+</body>
+<script type="text/javascript">
+function deleteItem(item) {
+	item.parentElement.remove();
+}
+
+function addItem() {
+	var listElement = document.createElement("LI");
+	listElement.innerHTML = document.getElementById("addItem").value;
+	console.log(listElement);
+	
+	var deleteButton  = document.createElement("BUTTON");
+	
+	deleteButton.setAttribute("onClick", "deleteItem(this)");
+	var textnodeButton = document.createTextNode("Delete");  
+	deleteButton.appendChild(textnodeButton);
+	
+	listElement.appendChild(deleteButton);
+	
+	document.getElementById("list").appendChild(listElement);
+}
+</script>
+</html>

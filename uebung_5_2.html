@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+</head>
+
+<body>
+<h1>Rednderliste</h1>
+
+Neuer Redner: <input type="text" name="addItem" id="addItem"> <button type="button" onClick="addItem()">Hinzufügen</button>
+
+<ul id="list">
+	<li>Anton <p class="time">00:00:07</p> <button type="button" class="speakerButton" onClick="toggleStartStop(this)">Start!</button></li>
+	<li>Berta <p class="time">00:00:04</p> <button type="button" class="speakerButton" onClick="toggleStartStop(this)">Start!</button></li>
+	<li>Carl <p class="time">00:00:39</p> <button type="button" class="speakerButton" onClick="toggleStartStop(this)">Stopp!</button></li>
+</ul>
+</body>
+
+<script type="text/javascript">
+var intervalFunction = setInterval(function() {
+var item = document.getElementById("list").getElementsByClassName("speakerButton")[2];
+counterSeconds(item);
+}, 1000);
+
+function toggleStartStop(item) {
+	if (item.innerHTML == "Stopp!") {		
+		item.innerHTML = "Start!"
+		clearInterval(intervalFunction);
+
+	}
+	else {
+		if(intervalFunction != "") {
+			clearInterval(intervalFunction);
+			
+			var buttons = document.getElementById("list").getElementsByClassName("speakerButton");
+			for(var i=0; i< buttons.length; i++) {
+				buttons[i].innerHTML = "Start!";
+			}
+		}
+		intervalFunction = setInterval(function() {counterSeconds(item);}, 1000);
+		item.innerHTML = "Stopp!";
+	}
+}
+
+function counterSeconds(item) {
+	var p = item.parentElement.getElementsByClassName("time")[0];
+	var time = p.innerHTML.split(":");
+	var seconds = parseInt(time[2]);
+	var minutes = parseInt(time[1]);
+	var hours = parseInt(time[0]);
+	if(parseInt(time[2]) < 59) {
+		seconds = parseInt(time[2]) + 1; 
+	}
+	else {
+		seconds = "00";
+		if(parseInt(time[1]) < 59) {
+			minutes = parseInt(time[1]) + 1;
+		} 
+		else {
+			minutes = "00";
+			hours = parseInt(time[0]) + 1;
+		}
+	}
+	seconds = ("0" + seconds).slice(-2);
+	minutes = ("0" + minutes).slice(-2);
+	hours = ("0" + hours).slice(-2);
+	var newTime = hours + ":" + minutes + ":" + seconds;
+	item.parentElement.getElementsByClassName("time")[0].innerHTML = newTime;
+}
+
+function addItem() {
+	var listElement = document.createElement("LI");
+	listElement.innerHTML = document.getElementById("addItem").value;
+
+	var p = document.createElement("P");
+	var textnodeButton = document.createTextNode("00:00:00");  
+	p.appendChild(textnodeButton);
+	listElement.appendChild(p);
+	
+	var startStopButton  = document.createElement("BUTTON");
+	
+	startStopButton.setAttribute("onClick", "toggleStartStop(this)");
+	startStopButton.setAttribute("class", "speakerButton");
+	var startStopText = document.createTextNode("Start!");  
+	startStopButton.appendChild(startStopText);
+	
+	listElement.appendChild(startStopButton);
+	
+	document.getElementById("list").appendChild(listElement);
+	toggleStartStop(startStopButton);
+}
+</script>
+</html>

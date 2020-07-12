@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<style>	
+	h1 {
+		text-align: center;
+	}
+	.innerElement {
+		width: 55vw;
+		margin-left: 5vw;
+		background-color: white;
+		height: 85vh;
+		margin-top: 5vh;
+		text-align: center;
+	}
+	.tableRight {
+		width: 50%;
+		text-align: left;
+	}
+	.tableLeft {
+		width: 50%;
+		text-align: right;
+	}
+</style>
+</head>
+
+<body style="width: 50vw">
+<div style="background-color: #B0E0E6; width: 60vw">
+	<h1>Survey Form</h1>
+	
+	<div class="innerElement">
+		<p style="padding-top: 20px">Let us know how we can improve freeCodeCamp</p>
+		
+		<form style="display: inline-block">
+		<table>
+			<tr>
+				<td class="tableLeft">* Name</td>
+				<td class="tableRight"><input type="text" placeholder="Enter your name"></input><br/></td>
+			</tr>
+			<tr>
+				<td class="tableLeft">* Email</td>
+				<td  class="tableRight"><input type="email" placeholder="Enter your Email"></input></td>
+			</tr>
+			<tr>
+				<td class="tableLeft">* Age</td>
+				<td  class="tableRight"><input type="number" placeholder="Age"></input></td>
+			</tr>
+			<tr>
+				<td class="tableLeft">Which option best describes your current role?</td>
+				<td class="tableRight"><select>
+					<option value="Student">Student</option>
+					<option value="option2">Option2</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="tableLeft">* How likely is that you would recommend freeCodeCamp to a friend?</td>
+				<td class="tableRight">
+					<input type="radio" name="recommendFreeCodeCamp" value="definitely">Definitely</input><br/>
+					<input type="radio" name="recommendFreeCodeCamp" value="maybe">Maybe</input>	<br/>
+					<input type="radio" name="recommendFreeCodeCamp" value="notSure">Not sure</input>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableLeft">What do you like most in FCC:</td>
+				<td class="tableRight"><select>
+					<option value="Student">Select an option</option>
+					<option value="option1">Option1</option>
+					<option value="option2">Option2</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="tableLeft">Things that should be improved in the future (Check all that apply)</td>
+				<td class="tableRight">
+					<input type="checkbox" name="improveFCC" value="FrontEndProjects">Front-end Projects</input><br/>
+					<input type="checkbox" name="improveFCC" value="BackEndProjects">Back-end Projects</input>	<br/>
+					<input type="checkbox" name="improveFCC" value="DataVisualization">Data Visualization</input>
+				</td>
+			</tr>
+		</table>
+			
+			
+		</form>
+	</div>
+	</div>
+</body>
+</html>
