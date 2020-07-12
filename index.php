@@ -12,9 +12,6 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 <style>
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(2); }
-
  ul {
   	list-style-type: none;
  }
@@ -213,7 +210,7 @@ return html`
  
  customElements.define('my-stoppuhr', MyStoppuhr);
 </script>
-  
+  <!-- css des folgendes Moduls (grow) aus folgender Quelle: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ (zuletzt besucht am 12.07.2020)
   <script type="module">
  import { LitElement, html , css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
@@ -448,7 +445,7 @@ return html`
  customElements.define('bezier-animation', BezierAnimation);
   </script>
   
-  <!-- Folgendes Modul ist größtenteils aus der folgenden Quelle: https://www.npmjs.com/package/lit-element-router/v/2.0.0-rc.10 (zuletzt besucht am: 09.07.2020)
+  <!-- Folgendes Modul ist grÃ¶ÃŸtenteils aus der folgenden Quelle: https://www.npmjs.com/package/lit-element-router/v/2.0.0-rc.10 (zuletzt besucht am: 09.07.2020)
    Im Modul verwendetes css aus folgenden Quellen: https://www.w3schools.com/css/css_navbar_vertical.asp (zuletzt besucht am: 09.07.2020)
  und https://www.w3schools.com/css/css_navbar_horizontal.asp (zuletzt besucht am: 09.07.2020) -->
   <script type="module">
@@ -641,7 +638,7 @@ render() {
 			<p route='info' id="info" @load=${this.showHorizontal(this.query.data)}>Info ${this.query.data}</p>
 			<p route='verticalInfo' id="infoVertical" @load=${this.showVertical(this.query.data)} >Info ${this.query.data}</p>
 		</app-main>
-		<button type="button" id="back" @click="${this.back}">Zurück</button>
+		<button type="button" id="back" @click="${this.back}">ZurÃ¼ck</button>
 	</div>
 
 	<div class="item4">
@@ -879,7 +876,7 @@ customElements.define('navigator-with-routing', App);
 	
 	<div class="item3">
 		<p id="text"></p>
-		<button type="button" id="back" onclick="back()">Zurück</button>
+		<button type="button" id="back" onclick="back()">ZurÃ¼ck</button>
 	</div>
 
 	<div class="item4">
@@ -975,7 +972,7 @@ if(isset($_GET['login'])) {
 	</div>
 </div>
 
-<p>*Orange unterlegte Aufgaben wurden aufgrund der Komplexität ihrer Umgebung (Node.js, Datenbank,...) nicht (bzw. nur bedingt) auf dieser Seite umgesetzt.</p>
+<p>*Orange unterlegte Aufgaben wurden aufgrund der KomplexitÃ¤t ihrer Umgebung (Node.js, Datenbank,...) nicht (bzw. nur bedingt) auf dieser Seite umgesetzt.</p>
 </body>
 
 <script type="text/javascript">
@@ -1025,11 +1022,15 @@ function showExerciceContent(filename) {
     }
     
     if(filename === 'uebung_12_1.html') {
+	$('#exerciceContent').hide();
+    	$('#exerciceContentLitElement').hide();
     	$('#php1').show();
     	return;
     }
     
      if(filename === 'uebung_12_2.html') {
+	$('#exerciceContent').hide();
+    	$('#exerciceContentLitElement').hide();
     	$('#php2').show();
     	return;
     }
@@ -1077,7 +1078,7 @@ var last_vertical;
 var active_horizontal;
 var active_vertical;
 
-async function test() {
+async function testNavigator() {
 var response = await fetch('input.json');
 json = await response.json();
 active_horizontal = "css";
@@ -1148,7 +1149,7 @@ function showUebung63() {
    	$('#uebung53').hide();
    	$('#php1').hide();
    	$('#php2').hide();
-   	test(); 
+   	testNavigator(); 
 }
 </script>
 
