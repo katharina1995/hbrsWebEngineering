@@ -210,7 +210,7 @@ return html`
  
  customElements.define('my-stoppuhr', MyStoppuhr);
 </script>
-  <!-- css des folgendes Moduls (grow) aus folgender Quelle: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ (zuletzt besucht am 12.07.2020)
+  <!-- css des folgendes Moduls (grow) aus folgender Quelle: https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ (zuletzt besucht am 12.07.2020) -->
   <script type="module">
  import { LitElement, html , css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
